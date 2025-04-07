@@ -227,7 +227,28 @@
         //4. View All Reservations With Total Cost
         static void ViewAllReservationsWithTotalCost()
         {
-           
+            for (int i = 0; i < roomCount; i++) // start looping from 0 until reach all rooms that are available in array
+            {
+                if (isReserved[i]) // check if the room is reserved (true)
+                {
+
+
+
+                    Console.WriteLine("Room Number: " + roomNumbers[i]); // show the room number
+                    Console.WriteLine("Reserved by : " + guestNames[i]); // show the guest name
+                    Console.WriteLine("Booking Date : " + bookingDates[i]); // show the booking date
+                    Console.WriteLine("Nights : " + nights[i]); // show the number of nights
+                    Console.WriteLine("Rate : " + roomRates[i]); // show the room rate
+                    double totalCost = roomRates[i] * nights[i]; // calculate the total cost
+                    Console.WriteLine("Total Cost : " + totalCost); // show the total cost
+                    Console.WriteLine(); // add an empty line 
+
+
+
+
+                }
+            }
+
         }
         //5. Search Reservation By Guest Name
         static void SearchReservationByGuestName()
