@@ -317,7 +317,32 @@
         //7. Cancel Reservation By Room Number
         static void CancelReservationByRoomNumber()
         {
-            
+
+            Console.Write("Enter room number to cancel reservation: "); // ask user to enter the room number
+            int roomNumber = int.Parse(Console.ReadLine()); // read the room number
+
+            for (int i = 0; i < roomCount; i++) // start looping from 0 until reach all rooms that are available in array
+            {
+                if (roomNumbers[i] == roomNumber) // check if the room number is already in the array
+                {
+
+                    if (isReserved[i]) // check if the room is reserved (true)
+                    {
+                        isReserved[i] = false; // set the room as not reserved
+                        guestNames[i] = ""; // store an empty string for guest name
+                        nights[i] = 0; // set the number of nights to 0
+                        Console.WriteLine("Reservation cancelled."); // show success message
+                        return; // exit the method
+                    }
+                    else // if the room is not reserved (false)
+                    {
+                        Console.WriteLine("Room is not reserved."); // show error message
+                        return; // exit the method
+                    }
+                }
+            }
+
+            Console.WriteLine("Room not found."); // show error message
         }
 
 
