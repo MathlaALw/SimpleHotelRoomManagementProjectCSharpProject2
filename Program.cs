@@ -253,7 +253,30 @@
         //5. Search Reservation By Guest Name
         static void SearchReservationByGuestName()
         {
-            
+            Console.Write("Enter guest name to search: "); // ask user to enter the guest name
+            string searchName = Console.ReadLine().ToLower(); // convert the string input to lower case
+            bool found = false; // initialize found variable to false
+
+            for (int i = 0; i < roomCount; i++) // start looping from 0 until reach all rooms that are available in array
+            {
+                if (isReserved[i] && guestNames[i].ToLower() == searchName) // check if the room is reserved (true) and the guest name is equal to the search name
+                {
+
+                    Console.WriteLine("Room Number : " + roomNumbers[i]); // show the room number
+                    Console.WriteLine("Guest Name : " + guestNames[i]);// show the guest name
+                    Console.WriteLine("Nights : " + nights[i]);// show the number of nights
+                    Console.WriteLine("Booking Dates : " + bookingDates[i]);// show the booking date
+                    Console.WriteLine("Total Cost : " + (roomRates[i] * nights[i]));// show the total cost
+                    Console.WriteLine("Room Rate : " + roomRates[i]);// show the room rate
+                    Console.WriteLine("Room Statuse : Reserved");// show the room status
+
+                    found = true; // set found variable to true
+                    break; // exit the loop
+                }
+            }
+
+            if (!found)// if the guest name is not found
+                Console.WriteLine("Reservation not found."); // show error message
         }
 
         //6. Find Highest Paying Guest
