@@ -282,7 +282,36 @@
         //6. Find Highest Paying Guest
         static void FindHighestPayingGuest()
         {
+            double maxCost = 0;// initialize maxCost variable to 0
+            int maxIndex = -1; // initialize maxIndex variable to -1 --> (-1 is a flag value to mean "No reservation found")
 
+            for (int i = 0; i < roomCount; i++) // start looping from 0 until reach all rooms that are available in array
+
+            {
+                if (isReserved[i])// check if the room is reserved (true).
+                {
+                    double totalCost = roomRates[i] * nights[i]; // calculate the total cost
+                    if (totalCost > maxCost) // check if the total cost is greater than maxCost
+                    {
+
+                        maxCost = totalCost; // set maxCost to totalCost
+                        maxIndex = i; // set maxIndex to i
+                    }
+                }
+            }
+
+            if (maxIndex != -1) // check if maxIndex is not -1
+            {
+
+                Console.WriteLine("Highest Paying Guest: " + guestNames[maxIndex]); // show the guest name has the highest total cost
+                Console.WriteLine("Total Amount = " + maxCost); // show the total cost of the highest paying guest
+
+
+            }
+            else // if no reservation found
+            {
+                Console.WriteLine("No reservations found."); // show error message
+            }
         }
 
         //7. Cancel Reservation By Room Number
