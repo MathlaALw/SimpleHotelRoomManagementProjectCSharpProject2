@@ -3,14 +3,14 @@
     internal class Program
     {
 
-        static int[] roomNumbers = new int[3];
-        static double[] roomRates = new double[3];
-        static bool[] isReserved = new bool[3];
-        static string[] guestNames = new string[3];
-        static int[] nights = new int[3];
-        static DateTime[] bookingDates = new DateTime[3];
+        static int[] roomNumbers = new int[MAX_ROOMS];
+        static double[] roomRates = new double[MAX_ROOMS];
+        static bool[] isReserved = new bool[MAX_ROOMS];
+        static string[] guestNames = new string[MAX_ROOMS];
+        static int[] nights = new int[MAX_ROOMS];
+        static DateTime[] bookingDates = new DateTime[MAX_ROOMS];
         static int roomCount = 0;
-        static int MAX_ROOMS = 3;
+        static int MAX_ROOMS = 5;
 
         static void Main(string[] args)
         {
@@ -79,7 +79,8 @@
 
             if (roomCount + numRoomsToAdd > MAX_ROOMS) // check if adding the rooms exceeds the maximum
             {
-                Console.WriteLine($"You can only add up to {MAX_ROOMS - roomCount} more rooms."); // show the remaining space
+                
+                Console.WriteLine("You can only add up to " + (MAX_ROOMS - roomCount) + "more rooms."); // show the remaining space
                 return; // exit the method
             }
 
@@ -92,7 +93,7 @@
                 do
                 {
                     isUnique = true; // Assume the room number is unique
-                    Console.Write("Enter room number for room : ");
+                    Console.Write("Enter room number : ");
                     roomNumber = int.Parse(Console.ReadLine());
 
                     for (int j = 0; j < roomCount; j++)//all the room numbers that are already in the array
@@ -109,11 +110,11 @@
 
                 double rate;
 
-                // Use do-while for validating rate
+                // validating rate
                 do
                 {
                     Console.Write("Enter room rate : "); // ask user to enter the room rate
-                                                         //convert the string input to a double value and put the number in the rate variable
+                        //convert the string input to a double value and put the number in the rate variable
                     if (!double.TryParse(Console.ReadLine(), out rate) || rate < 100) // check if the input is a valid double or >= 100
                     {
 
